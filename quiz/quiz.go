@@ -27,7 +27,7 @@ func main() {
 	lines := readLines(csvFileame)
 	totalQuestions = len(lines)
 
-	fmt.Printf("\nWould you like to start, you'll have %d seconds?", quizTime)
+	fmt.Printf("\nWould you like to start? you'll have %d seconds!", quizTime)
 	fmt.Scanln()
 	go evaluateQuizTime(quizTime, finished)
 	go presentQuiz(lines, &correctQuestions, finished)
@@ -60,26 +60,6 @@ func evaluateQuizTime(quizTime int, finished chan<- bool) {
 	<-timer.C
 	fmt.Printf("\nThe time has been expired.\n")
 	finished <- true
-}
-
-func extractQuestionsAndAnswers(lines [][]string) (questions []string, answers []string) {
-	for _, line := range lines {
-		questions = append(questions, line[0])
-		answers = append(answers, line[1])
-	}
-	return
-}
-
-func evaluateResult(userAnswers, correctAnswers []string) (totalQuestions int, correctQuestions int) {
-	for pos, userAnswer := range userAnswers {
-		correctAnswer := correctAnswers[pos]
-
-		totalQuestions++
-		if correctAnswer == userAnswer {
-			correctQuestions++
-		}
-	}	
-	return
 }
 
 func readLines(csvFilename string) [][]string {
