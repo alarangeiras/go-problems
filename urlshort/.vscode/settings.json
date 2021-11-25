@@ -1,0 +1,6 @@
+{
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "golang.go",
+    "go.autocompleteUnimportedPackages": true,
+    "go.formatTool": "gofmt"
+}

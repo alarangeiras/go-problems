@@ -11,7 +11,7 @@ import (
 
 const (
 	DEFAULT_FILE_NAME = "problems.csv"
-	DEFAULT_TIME = 30
+	DEFAULT_TIME      = 30
 )
 
 var totalQuestions, correctQuestions int
@@ -44,7 +44,7 @@ func presentQuiz(lines [][]string, totalCorrectQuestions *int, finished chan<- b
 		correctAnswer := line[1]
 
 		var userAnswer string
-		fmt.Printf("\nQuestion %d: %s >> ", pos + 1, question)
+		fmt.Printf("\nQuestion %d: %s >> ", pos+1, question)
 		fmt.Scan(&userAnswer)
 
 		if userAnswer == correctAnswer {
@@ -74,4 +74,4 @@ func readLines(csvFilename string) [][]string {
 		log.Fatalf("\ncould not read csv file")
 	}
 	return records
-} 
+}
